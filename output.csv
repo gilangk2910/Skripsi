@@ -1,0 +1,5 @@
+id;kode_provinsi;nama_provinsi;kode_kabupaten_kota;nama_kabupaten_kota;nama_rumah_sakit;kelas_rumah_sakit;jenis_rumah_sakit;"bed_occupation_rate (Persen)";"gross_death_rate (Persen)";"net_death_rate (Persen)";"bed_turn_over (Kali)";"turn_over_interval (Hari)";"average_length_of_stay (Hari)";Prediction
+1;32;"JAWA BARAT";3201;"KABUPATEN BOGOR";"RS PARU DR. M. GOENAWAN PARTOWIDIGDO";B;"RUMAH SAKIT KHUSUS";66.1;48.4;26;23;5;5;0
+2;32;"JAWA BARAT";3201;"KABUPATEN BOGOR";"RS UMUM DAERAH CIBINONG";B;"RUMAH SAKIT UMUM";75.0;59.7;40.9;72;1;4;2
+3;32;"JAWA BARAT";3201;"KABUPATEN BOGOR";"RS UMUM DAERAH CIAWI";B;"RUMAH SAKIT UMUM";89.8;75.6;41.4;62;1;4;2
+4;32;"JAWA BARAT";3201;"KABUPATEN BOGOR";"RS UMUM BINA HUSADA";C;"RUMAH SAKIT UMUM";0.0;0;0;0;0;0;0

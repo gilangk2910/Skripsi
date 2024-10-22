@@ -1,0 +1,65 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $bed_occupation_rate = $_POST['bed_occupation_rate'];
+    $gross_death_rate = $_POST['gross_death_rate'];
+    $net_death_rate = $_POST['net_death_rate'];
+    $bed_turn_over = $_POST['bed_turn_over'];
+    $turn_over_interval = $_POST['turn_over_interval'];
+    $average_length_of_stay = $_POST['average_length_of_stay'];
+
+    $hospital_type = isset($_POST['hospital_type']) ? implode(", ", $_POST['hospital_type']) : "Tidak ada";
+    if($hospital_type == "umum"){
+        $hospital_type = "1";
+    }else{
+        $hospital_type = "2";
+    }
+
+    // Proses dan simpan data di sini. Sebagai contoh:
+    // Anda bisa menyimpan data ke dalam database atau menampilkan pesan sukses.
+
+    echo "Data berhasil disimpan:";
+    echo "<br>Bed Occupation Rate: $bed_occupation_rate%";
+    echo "<br>Gross Death Rate: $gross_death_rate%";
+    echo "<br>Net Death Rate: $net_death_rate%";
+    echo "<br>Bed Turn Over: $bed_turn_over Kali";
+    echo "<br>Turn Over Interval: $turn_over_interval Hari";
+    echo "<br>Average Length of Stay: $average_length_of_stay Hari";
+    echo "<br>Tipe Rumah Sakit: $hospital_type";
+
+$url = "http://localhost:5000/predict";
+
+// Data form yang akan dikirimkan
+$data = array(
+    "bed_occupation_rate" => $bed_occupation_rate,
+    "gross_death_rate" => $gross_death_rate,
+    "net_death_rate" => $net_death_rate,
+    "bed_turn_over" => $bed_turn_over,
+    "turn_over_interval" => $turn_over_interval,
+    "average_length_of_stay" => $average_length_of_stay ,
+    "type" => $hospital_type
+);
+
+// Inisialisasi cURL
+$ch = curl_init($url);
+
+// Set opsi cURL
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+// Eksekusi permintaan
+$response = curl_exec($ch);
+
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    echo 'Response:' . $response;
+}
+
+// Tutup cURL
+curl_close($ch);
+
+} else {
+    echo "Tidak ada data yang dikirim.";
+}
+?>
